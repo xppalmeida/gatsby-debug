@@ -30,10 +30,11 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `pages`,
-        path: `${__dirname}/src/pages/`,
+        name: `markdowns`,
+        path: `${__dirname}/src/markdown`,
       },
     },
+    `gatsby-transformer-remark`,
     `gatsby-plugin-mdx`,
     {
       resolve: `gatsby-plugin-mdx`,
@@ -41,8 +42,15 @@ module.exports = {
         extensions: [`.mdx`, `.md`],
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    `gatsby-plugin-postcss`,
+    {
+      resolve: `gatsby-plugin-purgecss`,
+      options: {
+        printRejected: true, // Print removed selectors and processed file names
+        // develop: true, // Enable while using `gatsby develop`
+        tailwind: true, // Enable tailwindcss support
+        purgeOnly : ['components/', '/main.css', 'bootstrap/'], // Purge only these files/folders
+      }
+    }
   ],
 }
