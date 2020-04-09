@@ -23,7 +23,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     console.log('+++++++++++++++++++++++++++++++++ slug: ', page.frontmatter.slug);
     const config = {
       path: page.frontmatter.slug,
-      component: require.resolve(`./${page.frontmatter.component}`),
+      component: require.resolve(`./src/pages/HomePage.js`),
       context: {
         slug: page.frontmatter.slug,
       },

@@ -6,14 +6,14 @@ import { MDXRenderer } from 'gatsby-plugin-mdx';
 import SEO from "../components/SEO";
 import TeaserMovie from '../components/TeaserMovie';
 
-const HomePage = ({ data: { mdx: { body, frontmatter }} }) => {
+const HomePage = (props) => {
+  console.log(props);
+  const { data: { mdx: { body, frontmatter }} } = props;
   return (
     <div>
       <SEO title={frontmatter.title} />
       <Header siteTitle={frontmatter.title} />
-      <>
       <MDXRenderer>{body}</MDXRenderer>
-      </>
       <Footer />
       <TeaserMovie />
     </div>
